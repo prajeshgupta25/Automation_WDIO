@@ -51,7 +51,7 @@ describe('Advance Testing', () => {
         await browser.pause(5000)
     })
 
-    it.only('Network Throttle', async () =>{
+    it('Network Throttle', async () =>{
         await browser.throttle('Regular2G');
         await browser.url('https://webdriver.io')
         await browser.pause(5000)
@@ -63,6 +63,30 @@ describe('Advance Testing', () => {
         await browser.throttle('offline');
         await browser.url('https://webdriver.io')
         await browser.pause(5000)
+    })
+
+    it('Executing Javascript', async () =>{
+        const result = await browser.execute(
+            (a, b) =>{
+                return a + b 
+            },
+            5,
+            10
+        )
+        await expect(result).toBe(15)
+    })
+
+    it.only('Execute Async Javascript', async () =>{
+        const result = await browser.executeAsync(
+            (a, b, done) => {
+                setTimeout(() => {
+                    done(a + b)
+                }, 3000)
+            },
+            5,
+            10
+        )
+        await expect(result).toBe(15)
     })
 
     async function loadWebsite(){
