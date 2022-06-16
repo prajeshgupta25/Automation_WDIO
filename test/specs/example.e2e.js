@@ -62,26 +62,30 @@ describe('My First Test Suite', () => {
         await browser.pause(4000)
     })
 
-    it.only('Device Emulation', async () =>{
+    it('Device Emulation', async () =>{
         let mobile = [375, 812]
         let tablet = [1024, 768]
         let desktop = [1650, 1050]
 
         //Mobile
         await browser.setWindowSize(mobile[0], mobile[1]);
-        await browser.url("https://www.example.com")
+        await browser.url('https://www.example.com')
 
         //Tablet
         await browser.setWindowSize(tablet[0], tablet[1]);
-        await browser.url("https://www.example.com")
+        await browser.url('https://www.example.com')
 
         //Desktop
         await browser.setWindowSize(desktop[0], desktop[1]);
-        await browser.url("https://www.example.com")
+        await browser.url('https://www.example.com')
     })
 
-    it('', async () =>{
+    it('Taking Screenshots ', async () =>{
+        await browser.url('https://www.example.com')
+        await browser.saveScreenshot('my_ss.png')
 
+        let title = await $('h1')
+        await title.saveScreenshot('title-screenshot.png')
     })
 
     it('', async () =>{
