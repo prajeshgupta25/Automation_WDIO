@@ -28,6 +28,13 @@ describe('Advance Testing', () => {
         await browser.pause(5000)
     })
 
+    it('Display Title and Url', async () =>{
+        const results = await browser.getTitleAndUrl();
+        console.log("Title = " + results.title)
+        console.log("Url = " + results.url)
+        await browser.pause(5000)
+    })
+
     async function loadWebsite(){
         await browser.url('https://the-internet.herokuapp.com/upload')
     }

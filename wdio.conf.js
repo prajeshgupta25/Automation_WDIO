@@ -200,8 +200,13 @@ exports.config = {
             const remoteFilePath = await browser.uploadFile(path)
             await $(uploadBoxSelector).setValue(remoteFilePath)
             await $(submitUploadSelector).click()
-            // await $('#file-upload').setValue(remoteFilePath)
-            // await $('#file-submit').click()
+        })
+
+        browser.addCommand('getTitleAndUrl', async () =>{
+            return{
+                title: await browser.getTitle(),
+                url: await browser.getUrl()
+            }
         })
     },
     /**
