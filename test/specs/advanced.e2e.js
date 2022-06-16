@@ -76,7 +76,7 @@ describe('Advance Testing', () => {
         await expect(result).toBe(15)
     })
 
-    it.only('Execute Async Javascript', async () =>{
+    it('Execute Async Javascript', async () =>{
         const result = await browser.executeAsync(
             (a, b, done) => {
                 setTimeout(() => {
