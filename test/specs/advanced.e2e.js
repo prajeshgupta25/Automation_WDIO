@@ -1,17 +1,35 @@
 describe('Advance Testing', () => {
 
-    it('File Upload', async () => {
-        await browser.url("https://the-internet.herokuapp.com/upload")
+    let uploadBoxSelector = '#file-upload'
+    let submitUploadSelector = '#file-submit'
+
+    beforeEach(async () =>{
+        await loadWebsite()
+    })
+
+    it('File Upload 1', async () => {
 
         const filePath = './my_ss.png'
-        const remoteFilePath = await browser.uploadFile(filePath)
-
-        let chooseFileBtn = await $('#file-upload')
-        await chooseFileBtn.setValue(remoteFilePath)
-
-        let uploadBtn = await $('#file-submit')
-        await uploadBtn.click()
+        await browser.customFileUpload(filePath, uploadBoxSelector, submitUploadSelector)
         await browser.pause(5000)
     })
+
+    it('File Upload 2', async () => {
+
+        const filePath = './my_ss.png'
+        await browser.customFileUpload(filePath, uploadBoxSelector, submitUploadSelector)
+        await browser.pause(5000)
+    })
+
+    it('File Upload 3', async () => {
+
+        const filePath = './my_ss.png'
+        await browser.customFileUpload(filePath, uploadBoxSelector, submitUploadSelector)
+        await browser.pause(5000)
+    })
+
+    async function loadWebsite(){
+        await browser.url('https://the-internet.herokuapp.com/upload')
+    }
 
 })

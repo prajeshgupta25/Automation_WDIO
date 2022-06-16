@@ -195,8 +195,15 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+        browser.addCommand('customFileUpload', async(path, uploadBoxSelector, submitUploadSelector)=>{
+            const remoteFilePath = await browser.uploadFile(path)
+            await $(uploadBoxSelector).setValue(remoteFilePath)
+            await $(submitUploadSelector).click()
+            // await $('#file-upload').setValue(remoteFilePath)
+            // await $('#file-submit').click()
+        })
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
