@@ -208,6 +208,11 @@ exports.config = {
                 url: await browser.getUrl()
             }
         })
+
+        browser.addCommand('waitAndClick', async (selector) => {
+            await (await $(selector)).waitForDisplayed()
+            await (await $(selector)).click()
+        })
     },
     /**
      * Runs before a WebdriverIO command gets executed.

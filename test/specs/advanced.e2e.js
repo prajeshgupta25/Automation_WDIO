@@ -28,10 +28,12 @@ describe('Advance Testing', () => {
         await browser.pause(5000)
     })
 
-    it('Display Title and Url', async () =>{
+    it.only('Display Title and Url', async () =>{
         const results = await browser.getTitleAndUrl();
         console.log("Title = " + results.title)
         console.log("Url = " + results.url)
+
+        await browser.waitAndClick('#file-submit')
         await browser.pause(5000)
     })
 
