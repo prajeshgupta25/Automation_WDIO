@@ -7,8 +7,6 @@ describe('Login Flow', () => {
 
    it('Should not login with invalid name and password', async () => {
 
-      
-      
       //Click in sign in button
       await browser.waitAndClick('#signin_button')
       
@@ -23,5 +21,23 @@ describe('Login Flow', () => {
       //verify the error message
       let errorMsg = await $('.alert.alert-error').getText()
       await expect(errorMsg).toHaveTextContaining('Login and/or password are wrong.')
+   })
+
+   it('Reset Account Password', async () => {
+      const email = 'test@testmail.com'
+      //Click on reset button
+      await browser.waitAndClick('div.offset3.span6 a')
+
+      //Fill form
+      await $('#send_password_form').waitForDisplayed()
+      await $('#user_email').setValue(email)
+
+      //Submit form
+      await $('input[type=submit]').click()
+
+      //Verify message **TO check**
+      const resetMsg = await (await $('.span6')).getText()
+      await expect(resetMsg).toHaveTextContaining(email)
+
    })
 })
