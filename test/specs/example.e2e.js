@@ -40,14 +40,20 @@ describe('My First Test Suite', () => {
         await expect(inventoryContainer).toBeDisplayed()
     })
 
-    it.only('SelectBox and CheckBoxe', async () =>{
-        await browser.url('devexpress.github.io/testcafe/example/')
-        
+    it('SelectBox and CheckBoxe', async () =>{
+        await browser.url('https://devexpress.github.io/testcafe/example/')
+        // await browser.pause(5000)
         let selectbox = await $('#preferred-interface')
         await selectbox.selectByVisibleText('Both')
-
+        // await browser.pause(2000)
         let option = await $('option=Both')
         await expect(option).toBeDisplayed()
+    })
+
+    it.only('Set Browser Size', async () =>{
+        browser.setWindowSize(400, 400)
+        await browser.url('https://www.google.com')
+        await browser.pause(4000)
     })
 
 })
