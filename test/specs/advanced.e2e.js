@@ -28,7 +28,7 @@ describe('Advance Testing', () => {
         await browser.pause(5000)
     })
 
-    it.only('Display Title and Url', async () =>{
+    it('Display Title and Url', async () =>{
         const results = await browser.getTitleAndUrl();
         console.log("Title = " + results.title)
         console.log("Url = " + results.url)
@@ -37,8 +37,16 @@ describe('Advance Testing', () => {
         await browser.pause(5000)
     })
 
+    it('Change Browser Session', async () => {
+        console.log('Session Before Reload ' + browser.sessionId)
+        await browser.reloadSession();
+        console.log('Session After Reload ' + browser.sessionId)
+    })
+
+
     async function loadWebsite(){
         await browser.url('https://the-internet.herokuapp.com/upload')
+
     }
 
 })
