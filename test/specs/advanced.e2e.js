@@ -43,6 +43,13 @@ describe('Advance Testing', () => {
         console.log('Session After Reload ' + browser.sessionId)
     })
 
+    it.only('Create and Switch New Window', async () =>{
+        await browser.url("https://www.google.com")
+        await browser.newWindow("https://webdriver.io")
+        await browser.pause(5000)
+        await browser.switchWindow('google.com')
+        await browser.pause(5000)
+    })
 
     async function loadWebsite(){
         await browser.url('https://the-internet.herokuapp.com/upload')
