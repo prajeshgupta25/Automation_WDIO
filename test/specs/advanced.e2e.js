@@ -43,11 +43,25 @@ describe('Advance Testing', () => {
         console.log('Session After Reload ' + browser.sessionId)
     })
 
-    it.only('Create and Switch New Window', async () =>{
+    it('Create and Switch New Window', async () =>{
         await browser.url("https://www.google.com")
         await browser.newWindow("https://webdriver.io")
         await browser.pause(5000)
         await browser.switchWindow('google.com')
+        await browser.pause(5000)
+    })
+
+    it.only('Network Throttle', async () =>{
+        await browser.throttle('Regular2G');
+        await browser.url('https://webdriver.io')
+        await browser.pause(5000)
+
+        await browser.throttle('Regular4G');
+        await browser.url('https://webdriver.io')
+        await browser.pause(5000)
+
+        await browser.throttle('offline');
+        await browser.url('https://webdriver.io')
         await browser.pause(5000)
     })
 
