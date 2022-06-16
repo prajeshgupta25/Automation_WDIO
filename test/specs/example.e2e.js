@@ -1,4 +1,4 @@
-describe('My First Test Suite', () => {
+describe.skip('My First Test Suite', () => {
     it('my first wdio test', async () => {
         let myUrl = "https://www.google.com"
         let smallPause = 2000
@@ -40,7 +40,7 @@ describe('My First Test Suite', () => {
         await expect(inventoryContainer).toBeDisplayed()
     })
 
-    it('SelectBox and CheckBoxe', async () =>{
+    it('SelectBox and CheckBox', async () =>{
         await browser.url('https://devexpress.github.io/testcafe/example/')
         // await browser.pause(5000)
         let selectbox = await $('#preferred-interface')
