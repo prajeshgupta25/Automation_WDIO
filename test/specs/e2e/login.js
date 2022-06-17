@@ -19,7 +19,7 @@ describe('Login Flow', () => {
       await $('.btn.btn-primary').click()
 
       //verify the error message
-      let errorMsg = await $('.alert.alert-error').getText()
+      let errorMsg = await $('.alert.alert-error')
       await expect(errorMsg).toHaveTextContaining('Login and/or password are wrong.')
    })
 
@@ -36,8 +36,9 @@ describe('Login Flow', () => {
       await $('input[type=submit]').click()
 
       //Verify message **TO check**
-      const resetMsg = await (await $('.span6')).getText()
-      await expect(resetMsg).toHaveTextContaining(email)
+      const resetMsg = await (await $('.span6'))
+      await expect(resetMsg).toHaveTextContaining(`email: ${email}`)
 
    })
+
 })
